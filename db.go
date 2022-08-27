@@ -13,5 +13,9 @@ var DBQueries *db.Queries
 func connectPool(connStr string) error {
 	var err error
 	DB, err = pgxpool.Connect(context.Background(), connStr)
-	return err
+	if err != nil {
+		return err
+	}
+	DBQueries = db.New(DB)
+	return nil
 }

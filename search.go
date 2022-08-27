@@ -9,6 +9,8 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
+var nullArrJSON = []byte("[]")
+
 func SearchPackagesHandler(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	query := r.URL.Query().Get("q")
 	pkgs, err := DBQueries.SearchPackages(context.Background(), query)
@@ -16,6 +18,12 @@ func SearchPackagesHandler(w http.ResponseWriter, r *http.Request, _ httprouter.
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	if len(pkgs) <= 0 {
+		w.WriteHeader(200)
+		w.Write(nullArrJSON)
+		return
+	}
+
 	err = json.NewEncoder(w).Encode(pkgs)
 	if err != nil {
 		return
