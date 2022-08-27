@@ -37,6 +37,8 @@ var box *vbox.BlackBox
 var genToken = flag.Bool("gen_token", false, "keygen")
 var tokenExp = flag.Int("exp", 86400*30, "exp")
 
+//go:generate sqlc 
+
 func main() {
 	godotenv.Load()
 	flag.Parse()
@@ -67,6 +69,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/__api/v1/Search", SearchPackagesHandler)
 	router.POST("/__api/v1/CreatePackage", AdminCreatePackageHandler)
+	router.NotFound = &PackagesHandler{}
 
 	srv := http.Server{Handler: router, IdleTimeout: time.Second * 25}
 	go srv.Serve(ln)
