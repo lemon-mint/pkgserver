@@ -6,6 +6,7 @@ import (
 	"net"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/lemon-mint/envaddr"
@@ -27,9 +28,7 @@ func main() {
 
 	router := httprouter.New()
 
-	srv := http.Server{
-		Handler: router,
-	}
+	srv := http.Server{Handler: router, IdleTimeout: time.Second * 25}
 	go srv.Serve(ln)
 	signal2.WFI()
 
