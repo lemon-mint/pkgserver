@@ -10,10 +10,19 @@ import (
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/lemon-mint/envaddr"
+	"github.com/lemon-mint/godotenv"
 	"v8.run/go/exp/signal2"
+	"v8.run/go/exp/util/env"
 )
 
 func main() {
+	godotenv.Load()
+
+	err := connectPool(env.GetEnvOrDefault("DATABASE_URL", ""))
+	if err != nil {
+		panic(err)
+	}
+
 	ln, err := net.Listen("tcp", envaddr.Get(":8080"))
 	if err != nil {
 		panic(err)

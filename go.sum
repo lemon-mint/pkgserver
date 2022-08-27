@@ -60,6 +60,7 @@ github.com/jackc/pgx/v4 v4.17.0/go.mod h1:Gd6RmOhtFLTu8cp/Fhq4kP195KrshxYJH3oW8A
 github.com/jackc/puddle v0.0.0-20190413234325-e4ced69a3a2b/go.mod h1:m4B5Dj62Y0fbyuIc15OsIqK0+JU8nkqQjsgx7dvjSWk=
 github.com/jackc/puddle v0.0.0-20190608224051-11cab39313c9/go.mod h1:m4B5Dj62Y0fbyuIc15OsIqK0+JU8nkqQjsgx7dvjSWk=
 github.com/jackc/puddle v1.1.3/go.mod h1:m4B5Dj62Y0fbyuIc15OsIqK0+JU8nkqQjsgx7dvjSWk=
+github.com/jackc/puddle v1.2.1 h1:gI8os0wpRXFd4FiAY2dWiqRK037tjj3t7rKFeO4X5iw=
 github.com/jackc/puddle v1.2.1/go.mod h1:m4B5Dj62Y0fbyuIc15OsIqK0+JU8nkqQjsgx7dvjSWk=
 github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
 github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
@@ -72,6 +73,8 @@ github.com/kr/pty v1.1.8/go.mod h1:O1sed60cT9XZ5uDucP5qwvh+TE3NnUj51EiZO/lmSfw=
 github.com/kr/text v0.1.0/go.mod h1:4Jbv+DJW3UT/LiOwJeYQe1efqtUx/iVham/4vfdArNI=
 github.com/lemon-mint/envaddr v0.0.0-20220724120637-f2bfd2710deb h1:0F4uyUlNFiK6eINvVjlOIjCya+l+YjjybADGqCNU35Q=
 github.com/lemon-mint/envaddr v0.0.0-20220724120637-f2bfd2710deb/go.mod h1:SKgtfBMu7EVSi/eeEqfCD/cxwSw3rk091SdA1k6NZ4w=
+github.com/lemon-mint/godotenv v1.0.3 h1:wJBuGdp5eez/ycl9c8502qLj1RBPRHLDHTR6eoD/pwM=
+github.com/lemon-mint/godotenv v1.0.3/go.mod h1:hBLJjPZkQ2QMrEwirLCQ+tRkWBKufZ1VxoqpZixGUYo=
 github.com/lib/pq v1.0.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/lib/pq v1.1.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/lib/pq v1.2.0/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
