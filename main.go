@@ -36,6 +36,7 @@ func main() {
 	}())
 
 	router := httprouter.New()
+	router.GET("/__api/v1/search", SearchPackagesHandler)
 
 	srv := http.Server{Handler: router, IdleTimeout: time.Second * 25}
 	go srv.Serve(ln)

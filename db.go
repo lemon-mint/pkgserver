@@ -4,9 +4,11 @@ import (
 	"context"
 
 	"github.com/jackc/pgx/v4/pgxpool"
+	"github.com/lemon-mint/pkgserver/db"
 )
 
 var DB *pgxpool.Pool
+var DBQueries *db.Queries
 
 func connectPool(connStr string) error {
 	var err error
