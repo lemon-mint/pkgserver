@@ -10,3 +10,12 @@ WHERE pkg_name = $1 LIMIT 1;
 SELECT * FROM packages
 WHERE to_tsvector('english', description) @@ to_tsquery('english', $1)
 OR pkg_name = $1;
+
+-- name: CreatePackage :exec
+INSERT INTO packages (
+    pkg_name   ,
+    pkg_type   ,
+    vcs        ,
+    url        ,
+    description
+) VALUES ($1, $2, $3, $4, $5);

@@ -7,7 +7,37 @@ package db
 
 import (
 	"context"
+	"database/sql"
 )
+
+const createPackage = `-- name: CreatePackage :exec
+INSERT INTO packages (
+    pkg_name   ,
+    pkg_type   ,
+    vcs        ,
+    url        ,
+    description
+) VALUES ($1, $2, $3, $4, $5)
+`
+
+type CreatePackageParams struct {
+	PkgName     string         `db:"pkg_name" json:"pkg_name"`
+	PkgType     Pkgtype        `db:"pkg_type" json:"pkg_type"`
+	Vcs         Vcstype        `db:"vcs" json:"vcs"`
+	Url         string         `db:"url" json:"url"`
+	Description sql.NullString `db:"description" json:"description"`
+}
+
+func (q *Queries) CreatePackage(ctx context.Context, arg CreatePackageParams) error {
+	_, err := q.db.Exec(ctx, createPackage,
+		arg.PkgName,
+		arg.PkgType,
+		arg.Vcs,
+		arg.Url,
+		arg.Description,
+	)
+	return err
+}
 
 const getPackageWithID = `-- name: GetPackageWithID :one
 SELECT id, pkg_name, pkg_type, vcs, url, description FROM packages
