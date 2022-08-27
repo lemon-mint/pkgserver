@@ -2,8 +2,10 @@ package main
 
 import (
 	"context"
+	"log"
 	"net"
 	"net/http"
+	"strings"
 
 	"github.com/julienschmidt/httprouter"
 	"github.com/lemon-mint/envaddr"
@@ -16,6 +18,12 @@ func main() {
 		panic(err)
 	}
 	defer ln.Close()
+	log.Printf("App Running on http://%s\n", func() string {
+		if strings.HasPrefix(ln.Addr().String(), "[::]:") {
+			return "localhost" + strings.TrimPrefix(ln.Addr().String(), "[::]")
+		}
+		return ln.Addr().String()
+	}())
 
 	router := httprouter.New()
 
