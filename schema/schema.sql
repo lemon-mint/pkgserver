@@ -7,7 +7,7 @@ CREATE TABLE packages (
     pkg_type    pkgtype   NOT NULL,
     vcs         vcstype   NOT NULL,
     url         TEXT      NOT NULL,
-    description TEXT
+    description TEXT      NOT NULL
 );
 
 CREATE INDEX packages_search_fulltext ON packages USING GIN(to_tsvector('english', description));
