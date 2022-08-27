@@ -66,7 +66,7 @@ func main() {
 
 	router := httprouter.New()
 	router.GET("/__api/v1/Search", SearchPackagesHandler)
-	router.POST("/__api/v1/CreatePackage", SearchPackagesHandler)
+	router.POST("/__api/v1/CreatePackage", AdminCreatePackageHandler)
 
 	srv := http.Server{Handler: router, IdleTimeout: time.Second * 25}
 	go srv.Serve(ln)
