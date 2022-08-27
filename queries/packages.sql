@@ -19,3 +19,7 @@ INSERT INTO packages (
     url        ,
     description
 ) VALUES ($1, $2, $3, $4, $5);
+
+-- name: DeletePackage :exec
+DELETE FROM packages
+WHERE pkg_name = $1;

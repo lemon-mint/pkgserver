@@ -7,7 +7,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 )
 
 const createPackage = `-- name: CreatePackage :exec
@@ -21,11 +20,11 @@ INSERT INTO packages (
 `
 
 type CreatePackageParams struct {
-	PkgName     string         `db:"pkg_name" json:"pkg_name"`
-	PkgType     Pkgtype        `db:"pkg_type" json:"pkg_type"`
-	Vcs         Vcstype        `db:"vcs" json:"vcs"`
-	Url         string         `db:"url" json:"url"`
-	Description sql.NullString `db:"description" json:"description"`
+	PkgName     string  `db:"pkg_name" json:"pkg_name"`
+	PkgType     Pkgtype `db:"pkg_type" json:"pkg_type"`
+	Vcs         Vcstype `db:"vcs" json:"vcs"`
+	Url         string  `db:"url" json:"url"`
+	Description string  `db:"description" json:"description"`
 }
 
 func (q *Queries) CreatePackage(ctx context.Context, arg CreatePackageParams) error {
@@ -36,6 +35,16 @@ func (q *Queries) CreatePackage(ctx context.Context, arg CreatePackageParams) er
 		arg.Url,
 		arg.Description,
 	)
+	return err
+}
+
+const deletePackage = `-- name: DeletePackage :exec
+DELETE FROM packages
+WHERE pkg_name = $1
+`
+
+func (q *Queries) DeletePackage(ctx context.Context, pkgName string) error {
+	_, err := q.db.Exec(ctx, deletePackage, pkgName)
 	return err
 }
 

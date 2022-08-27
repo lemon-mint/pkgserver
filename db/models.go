@@ -5,7 +5,6 @@
 package db
 
 import (
-	"database/sql"
 	"database/sql/driver"
 	"fmt"
 )
@@ -100,10 +99,10 @@ func (ns NullVcstype) Value() (driver.Value, error) {
 }
 
 type Package struct {
-	ID          int64          `db:"id" json:"id"`
-	PkgName     string         `db:"pkg_name" json:"pkg_name"`
-	PkgType     Pkgtype        `db:"pkg_type" json:"pkg_type"`
-	Vcs         Vcstype        `db:"vcs" json:"vcs"`
-	Url         string         `db:"url" json:"url"`
-	Description sql.NullString `db:"description" json:"description"`
+	ID          int64   `db:"id" json:"id"`
+	PkgName     string  `db:"pkg_name" json:"pkg_name"`
+	PkgType     Pkgtype `db:"pkg_type" json:"pkg_type"`
+	Vcs         Vcstype `db:"vcs" json:"vcs"`
+	Url         string  `db:"url" json:"url"`
+	Description string  `db:"description" json:"description"`
 }
