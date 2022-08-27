@@ -37,8 +37,6 @@ var box *vbox.BlackBox
 var genToken = flag.Bool("gen_token", false, "keygen")
 var tokenExp = flag.Int("exp", 86400*30, "exp")
 
-//go:generate sqlc 
-
 func main() {
 	godotenv.Load()
 	flag.Parse()

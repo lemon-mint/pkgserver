@@ -12,6 +12,7 @@ require (
 	github.com/julienschmidt/httprouter v1.3.0
 	github.com/lemon-mint/godotenv v1.0.3
 	github.com/lemon-mint/vbox v1.3.2
+	github.com/valyala/quicktemplate v1.7.0
 )
 
 require (
@@ -23,7 +24,6 @@ require (
 	github.com/jackc/pgtype v1.12.0 // indirect
 	github.com/jackc/puddle v1.2.1 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
-	github.com/valyala/quicktemplate v1.7.0 // indirect
 	golang.org/x/crypto v0.0.0-20220826181053-bd7e27e6170d // indirect
 	golang.org/x/sys v0.0.0-20220825204002-c680a09ffe64 // indirect
 	golang.org/x/text v0.3.7 // indirect

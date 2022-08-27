@@ -19,7 +19,7 @@ func SearchPackagesHandler(w http.ResponseWriter, r *http.Request, _ httprouter.
 		return
 	}
 	if len(pkgs) <= 0 {
-		w.WriteHeader(200)
+		w.WriteHeader(http.StatusOK)
 		w.Write(nullArrJSON)
 		return
 	}
