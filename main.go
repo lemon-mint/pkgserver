@@ -5,6 +5,7 @@ import (
 	"net"
 	"net/http"
 
+	"github.com/julienschmidt/httprouter"
 	"github.com/lemon-mint/envaddr"
 	"v8.run/go/exp/signal2"
 )
@@ -16,7 +17,11 @@ func main() {
 	}
 	defer ln.Close()
 
-	srv := http.Server{}
+	router := httprouter.New()
+
+	srv := http.Server{
+		Handler: router,
+	}
 	go srv.Serve(ln)
 	signal2.WFI()
 

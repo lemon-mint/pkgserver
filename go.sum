@@ -1,6 +1,6 @@
+github.com/julienschmidt/httprouter v1.3.0 h1:U0609e9tgbseu3rBINet9P48AI/D3oJs4dN7jwJOQ1U=
+github.com/julienschmidt/httprouter v1.3.0/go.mod h1:JR6WtHb+2LUe8TCKY3cZOxFyyO8IZAc4RVcycCCAKdM=
 github.com/lemon-mint/envaddr v0.0.0-20220724120637-f2bfd2710deb h1:0F4uyUlNFiK6eINvVjlOIjCya+l+YjjybADGqCNU35Q=
 github.com/lemon-mint/envaddr v0.0.0-20220724120637-f2bfd2710deb/go.mod h1:SKgtfBMu7EVSi/eeEqfCD/cxwSw3rk091SdA1k6NZ4w=
-v8.run/go/exp v0.0.9 h1:XQU/ll8QpfhgaX4FtwgM4H8Z3L2iCtDWSR6dljc433c=
-v8.run/go/exp v0.0.9/go.mod h1:PXvWlnUgCKNPDInXVYZ9HHVxvnGDT9l5w8m09H5mN/U=
 v8.run/go/exp v0.0.10 h1:yjINp83quK6UWO2uwiwNMx5KPJJdRGEY2NJ8e63Nits=
 v8.run/go/exp v0.0.10/go.mod h1:PXvWlnUgCKNPDInXVYZ9HHVxvnGDT9l5w8m09H5mN/U=
