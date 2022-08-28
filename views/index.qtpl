@@ -26,8 +26,6 @@ type Card struct {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package Server</title>
-
-    <style>html{display:block;background-color:#F5F0BB;color:#3D3C42;font-weight:800}.box{display:flex}.ma{height:2.0;margin:auto;margin-bottom:1.5em}input[type="text"]{width:850px;height:100%;border-color:black;border-radius:0}input[type="submit"]{height:100%;margin-bottom:0;border-color:black;border-radius:0}hr{height:.25em;background-color:#73A9AD;border-radius:1em;border-color:#73A9AD}a,a:link,a:hover,a:visited,a:active{color:#3D3C42;text-decoration:underline}.card{width:900px;margin:1.5em auto;padding:1.7em;background-color:#90C8AC;border-radius:.5em}@media (max-width:1000px){.card{margin:1em auto;width:auto}.ma{width:90vw;margin:auto;margin-bottom:3em}input[type="text"]{width:85%;margin:2em auto}input[type="submit"]{width:10%}}</style>
 </head>
 
 <body>

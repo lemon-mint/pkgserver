@@ -97,8 +97,6 @@ func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card, prev, next string)
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package Server</title>
-
-    <style>html{display:block;background-color:#F5F0BB;color:#3D3C42;font-weight:800}.box{display:flex}.ma{height:2.0;margin:auto;margin-bottom:1.5em}input[type="text"]{width:850px;height:100%;border-color:black;border-radius:0}input[type="submit"]{height:100%;margin-bottom:0;border-color:black;border-radius:0}hr{height:.25em;background-color:#73A9AD;border-radius:1em;border-color:#73A9AD}a,a:link,a:hover,a:visited,a:active{color:#3D3C42;text-decoration:underline}.card{width:900px;margin:1.5em auto;padding:1.7em;background-color:#90C8AC;border-radius:.5em}@media (max-width:1000px){.card{margin:1em auto;width:auto}.ma{width:90vw;margin:auto;margin-bottom:3em}input[type="text"]{width:85%;margin:2em auto}input[type="submit"]{width:10%}}</style>
 </head>
 
 <body>
@@ -111,56 +109,56 @@ func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card, prev, next string)
     </form>
 
     <div id="cards">`)
-//line views/index.qtpl:42
+//line views/index.qtpl:40
 	for _, v := range cards {
-//line views/index.qtpl:42
+//line views/index.qtpl:40
 		StreamPackageCard(qw422016, v.Name, v.URL, v.Description)
-//line views/index.qtpl:42
+//line views/index.qtpl:40
 	}
-//line views/index.qtpl:42
+//line views/index.qtpl:40
 	qw422016.N().S(`</div>
 
     <div class="card">
         <a href="?`)
-//line views/index.qtpl:45
+//line views/index.qtpl:43
 	qw422016.E().S(prev)
-//line views/index.qtpl:45
+//line views/index.qtpl:43
 	qw422016.N().S(`" id="prev"><button style="width: 40%">Prev</button></a>
         <a href="?`)
-//line views/index.qtpl:46
+//line views/index.qtpl:44
 	qw422016.E().S(next)
-//line views/index.qtpl:46
+//line views/index.qtpl:44
 	qw422016.N().S(`" id="next"><button style="width: 40%">Next</button></a>
     </div>
 </body>
 
 </html>
 `)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 }
 
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 func WriteIndexPage(qq422016 qtio422016.Writer, cards []Card, prev, next string) {
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	StreamIndexPage(qw422016, cards, prev, next)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	qt422016.ReleaseWriter(qw422016)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 }
 
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 func IndexPage(cards []Card, prev, next string) string {
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	qb422016 := qt422016.AcquireByteBuffer()
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	WriteIndexPage(qb422016, cards, prev, next)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	qs422016 := string(qb422016.B)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	qt422016.ReleaseByteBuffer(qb422016)
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 	return qs422016
-//line views/index.qtpl:51
+//line views/index.qtpl:49
 }
