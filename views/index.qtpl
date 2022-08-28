@@ -1,0 +1,51 @@
+{% code
+type Card struct {
+    Name        string `json:"name"`
+    URL         string `json:"url"`
+    Description string `json:"description"`
+}
+%}
+
+{% func PackageCard(pkg_name, url, description string) %}
+<div class="card">
+    <h2>{%s pkg_name %}</h2>
+    <hr />
+    <a href="https://pkg.go.dev/{%s pkg_name %}">Documentation</a>
+    <p>Repository: <a href="{%s url %}">{%s pkg_name %}</a></p>
+    <p>{%s description %}</p>
+</div>
+{% endfunc %}
+
+
+{% func IndexPage(cards []Card) %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Server</title>
+
+    <style>html{display:block;background-color:#F5F0BB;color:#3D3C42;font-weight:800}.box{display:flex}.ma{height:2.0;margin:auto;margin-bottom:1.5em}input[type="text"]{width:850px;height:100%;border-color:black;border-radius:0}input[type="submit"]{height:100%;margin-bottom:0;border-color:black;border-radius:0}hr{height:.25em;background-color:#73A9AD;border-radius:1em;border-color:#73A9AD}a,a:link,a:hover,a:visited,a:active{color:#3D3C42;text-decoration:underline}.card{width:900px;margin:1.5em auto;padding:1.7em;background-color:#90C8AC;border-radius:.5em}@media (max-width:1000px){.card{margin:1em auto;width:auto}.ma{width:90vw;margin:auto;margin-bottom:3em}input[type="text"]{width:85%;margin:2em auto}input[type="submit"]{width:10%}}</style>
+</head>
+
+<body>
+    <h1>Package Server</h1>
+    <hr />
+    <form action="/" method="get" class="box">
+        <div class="ma">
+            <input type="text" name="q" id="search" /><input type="submit">
+        </div>
+    </form>
+
+    <div id="cards">{% for _, v := range cards %}{%= PackageCard(v.Name, v.URL, v.Description) %}{% endfor %}</div>
+
+    <div class="card">
+        <a href=""><button style="width: 40%">Prev</button></a>
+        <a href=""><button style="width: 40%">Next</button></a>
+    </div>
+</body>
+
+</html>
+{% endfunc %}
