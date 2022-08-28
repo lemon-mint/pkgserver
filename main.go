@@ -67,6 +67,7 @@ func main() {
 	router := httprouter.New()
 	router.GET("/__api/v1/Search", SearchPackagesHandler)
 	router.POST("/__api/v1/CreatePackage", AdminCreatePackageHandler)
+	router.DELETE("/__api/v1/DeletePackage", AdminDeletePackageHandler)
 	router.HEAD("/__api/v1/healthz", HealthZHandler)
 	router.GET("/__api/v1/healthz", HealthZHandler)
 	router.NotFound = &PackagesHandler{}
