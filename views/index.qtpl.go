@@ -102,11 +102,11 @@ func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card, prev, next string)
 </head>
 
 <body>
-    <h1>Package Server</h1>
+    <h1><a href="/">Package Server</a></h1>
     <hr />
     <form action="/" method="get" class="box">
         <div class="ma">
-            <input type="text" name="q" id="search" /><input type="submit">
+            <input type="text" name="q" id="search" placeholder="Search" /><input type="submit">
         </div>
     </form>
 
