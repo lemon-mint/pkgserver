@@ -86,14 +86,56 @@ func (q *Queries) GetPackageWithName(ctx context.Context, pkgName string) (Packa
 	return i, err
 }
 
+const getPackages = `-- name: GetPackages :many
+SELECT id, pkg_name, pkg_type, vcs, url, description FROM packages ORDER BY id OFFSET $1 limit $2
+`
+
+type GetPackagesParams struct {
+	Offset int32 `db:"offset" json:"offset"`
+	Limit  int32 `db:"limit" json:"limit"`
+}
+
+func (q *Queries) GetPackages(ctx context.Context, arg GetPackagesParams) ([]Package, error) {
+	rows, err := q.db.Query(ctx, getPackages, arg.Offset, arg.Limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+	var items []Package
+	for rows.Next() {
+		var i Package
+		if err := rows.Scan(
+			&i.ID,
+			&i.PkgName,
+			&i.PkgType,
+			&i.Vcs,
+			&i.Url,
+			&i.Description,
+		); err != nil {
+			return nil, err
+		}
+		items = append(items, i)
+	}
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+	return items, nil
+}
+
 const searchPackages = `-- name: SearchPackages :many
 SELECT id, pkg_name, pkg_type, vcs, url, description FROM packages
 WHERE to_tsvector('english', description) @@ to_tsquery('english', $1)
-OR pkg_name = $1
+OR pkg_name = $1 ORDER BY id OFFSET $2 limit $3
 `
 
-func (q *Queries) SearchPackages(ctx context.Context, toTsquery string) ([]Package, error) {
-	rows, err := q.db.Query(ctx, searchPackages, toTsquery)
+type SearchPackagesParams struct {
+	ToTsquery string `db:"to_tsquery" json:"to_tsquery"`
+	Offset    int32  `db:"offset" json:"offset"`
+	Limit     int32  `db:"limit" json:"limit"`
+}
+
+func (q *Queries) SearchPackages(ctx context.Context, arg SearchPackagesParams) ([]Package, error) {
+	rows, err := q.db.Query(ctx, searchPackages, arg.ToTsquery, arg.Offset, arg.Limit)
 	if err != nil {
 		return nil, err
 	}

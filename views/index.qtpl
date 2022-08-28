@@ -17,7 +17,7 @@ type Card struct {
 {% endfunc %}
 
 
-{% func IndexPage(cards []Card) %}
+{% func IndexPage(cards []Card, prev, next string) %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,8 +42,8 @@ type Card struct {
     <div id="cards">{% for _, v := range cards %}{%= PackageCard(v.Name, v.URL, v.Description) %}{% endfor %}</div>
 
     <div class="card">
-        <a href=""><button style="width: 40%">Prev</button></a>
-        <a href=""><button style="width: 40%">Next</button></a>
+        <a href="?{%s prev %}" id="prev"><button style="width: 40%">Prev</button></a>
+        <a href="?{%s next %}" id="next"><button style="width: 40%">Next</button></a>
     </div>
 </body>
 

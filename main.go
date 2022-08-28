@@ -70,6 +70,7 @@ func main() {
 	router.DELETE("/__api/v1/DeletePackage", AdminDeletePackageHandler)
 	router.HEAD("/__api/v1/healthz", HealthZHandler)
 	router.GET("/__api/v1/healthz", HealthZHandler)
+	router.GET("/", IndexPageHandler)
 	router.NotFound = &PackagesHandler{}
 
 	srv := http.Server{Handler: router, IdleTimeout: time.Second * 25}

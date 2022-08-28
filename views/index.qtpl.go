@@ -86,7 +86,7 @@ func PackageCard(pkg_name, url, description string) string {
 }
 
 //line views/index.qtpl:20
-func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card) {
+func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card, prev, next string) {
 //line views/index.qtpl:20
 	qw422016.N().S(`
 <!DOCTYPE html>
@@ -121,8 +121,16 @@ func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card) {
 	qw422016.N().S(`</div>
 
     <div class="card">
-        <a href=""><button style="width: 40%">Prev</button></a>
-        <a href=""><button style="width: 40%">Next</button></a>
+        <a href="?`)
+//line views/index.qtpl:45
+	qw422016.E().S(prev)
+//line views/index.qtpl:45
+	qw422016.N().S(`" id="prev"><button style="width: 40%">Prev</button></a>
+        <a href="?`)
+//line views/index.qtpl:46
+	qw422016.E().S(next)
+//line views/index.qtpl:46
+	qw422016.N().S(`" id="next"><button style="width: 40%">Next</button></a>
     </div>
 </body>
 
@@ -132,22 +140,22 @@ func StreamIndexPage(qw422016 *qt422016.Writer, cards []Card) {
 }
 
 //line views/index.qtpl:51
-func WriteIndexPage(qq422016 qtio422016.Writer, cards []Card) {
+func WriteIndexPage(qq422016 qtio422016.Writer, cards []Card, prev, next string) {
 //line views/index.qtpl:51
 	qw422016 := qt422016.AcquireWriter(qq422016)
 //line views/index.qtpl:51
-	StreamIndexPage(qw422016, cards)
+	StreamIndexPage(qw422016, cards, prev, next)
 //line views/index.qtpl:51
 	qt422016.ReleaseWriter(qw422016)
 //line views/index.qtpl:51
 }
 
 //line views/index.qtpl:51
-func IndexPage(cards []Card) string {
+func IndexPage(cards []Card, prev, next string) string {
 //line views/index.qtpl:51
 	qb422016 := qt422016.AcquireByteBuffer()
 //line views/index.qtpl:51
-	WriteIndexPage(qb422016, cards)
+	WriteIndexPage(qb422016, cards, prev, next)
 //line views/index.qtpl:51
 	qs422016 := string(qb422016.B)
 //line views/index.qtpl:51
